@@ -1,0 +1,27 @@
+{
+  "name": "estrutura-prova-saep",
+  "version": "1.0.0",
+  "description": "Projeto base de controle de estoque com Node.js, Express e PostgreSQL.",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
+  },
+  "keywords": [
+    "saep",
+    "estoque",
+    "node",
+    "express",
+    "postgresql"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^16.4.7",
+    "express": "^4.22.3",
+    "nodemon": "^3.1.14",
+    "pg": "^8.16.3"
+  }
+}
