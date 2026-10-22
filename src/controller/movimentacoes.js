@@ -9,7 +9,7 @@ app.use(estoqueRoutes);
 
 const porta = process.env.PORT || 3000;
 
-router.post('/movimentar_produto', async (req, res) => {
+app.post('/movimentar_produto', async (req, res) => {
   const { id_produto, tipo, quantidade } = req.body;
 
   if (id_produto === undefined || id_produto === null || isNaN(Number(id_produto))) {
@@ -52,21 +52,21 @@ router.post('/movimentar_produto', async (req, res) => {
   }
 });
 
-// router.get('/listar_movimentacoes', async (req, res) => {
-//   try {
-//     const { rows: movimentacoes } = await conexao.query(
-//       'SELECT m.id_movimentacao, m.id_produto, p.nome, m.tipo, m.quantidade ' +
-//       'FROM movimentacao m ' +
-//       'INNER JOIN produto p ON p.id_produto = m.id_produto ' +
-//       'ORDER BY m.id_movimentacao DESC'
-//     );
+app.get('/listar_movimentacoes', async (req, res) => {
+  try {
+    const { rows: movimentacoes } = await conexao.query(
+      'SELECT m.id_movimentacao, m.id_produto, p.nome, m.tipo, m.quantidade ' +
+      'FROM movimentacao m ' +
+      'INNER JOIN produto p ON p.id_produto = m.id_produto ' +
+      'ORDER BY m.id_movimentacao DESC'
+    );
 
-//     return res.status(200).json(movimentacoes);
-//   } catch (erro) {
-//     console.log(erro);
-//     return res.status(500).json({ erro: 'Erro ao listar movimentacoes' });
-//   }
-// });
+    return res.status(200).json(movimentacoes);
+  } catch (erro) {
+    console.log(erro);
+    return res.status(500).json({ erro: 'Erro ao listar movimentacoes' });
+  }
+});
 
 export default app;
 
